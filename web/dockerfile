@@ -1,0 +1,21 @@
+FROM ubuntu:20.04
+
+ARG TARGETARCH
+ENV TARGETARCH=$TARGETARCH
+
+WORKDIR /var/www/webtrees
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ=UTC
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+ENV LANG C.UTF-8
+
+ADD private /var/tmp/private
+ADD web /var/tmp/app
+COPY .env /var/tmp/app
+
+RUN /var/tmp/app/setup.sh
+
+CMD /var/tmp/app/entry.sh
