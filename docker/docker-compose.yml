@@ -2,12 +2,12 @@ version: '3.7'
 
 services:
   backend:
-    container_name: '${APP_DOMAIN}_web'
+    container_name: '${APP_NAME}_web'
     build:
       context: .
       dockerfile: web/dockerfile
     volumes:
-      - ./..:/var/www/webtrees
+      - ./../webtrees:/var/www/webtrees
       - ./data/logs/nginx:/var/log/nginx
     ports:
       - '443:443'
@@ -17,18 +17,18 @@ services:
     depends_on:
       - database
   database:
-    container_name: '${APP_DOMAIN}_db'
+    container_name: '${APP_NAME}_db'
     image: postgres:12
     environment:
-      POSTGRES_DB: ${APP_DOMAIN}
-      POSTGRES_USER: ${APP_DOMAIN}
-      POSTGRES_PASSWORD: ${APP_DOMAIN}
+      POSTGRES_DB: ${APP_NAME}
+      POSTGRES_USER: ${APP_NAME}
+      POSTGRES_PASSWORD: ${APP_NAME}
     volumes:
       - ./data/db:/var/lib/postgresql/data
     ports:
       - '5432:5432'
   maildev:
-    container_name: '${APP_DOMAIN}_mail'
+    container_name: '${APP_NAME}_mail'
     image: dominikserafin/maildev
     ports:
       - '9025:1025'

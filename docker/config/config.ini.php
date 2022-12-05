@@ -1,0 +1,10 @@
+; <?php return; ?> DO NOT DELETE THIS LINE
+dbtype="pgsql"
+dbhost=""
+dbport="5432"
+dbuser=""
+dbpass=""
+dbname=""
+tblpfx="wt_"
+base_url=""
+rewrite_urls="0"

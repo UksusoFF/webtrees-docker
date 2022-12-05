@@ -7,7 +7,7 @@ cd "${SCRIPT_DIR}"
 
 bash "${SCRIPT_DIR}/_env.sh"
 
-docker-compose --file docker-compose.yml --project-name "${APP_DOMAIN}" build --no-cache
+docker-compose --file docker-compose.yml --project-name "${APP_NAME}" build --no-cache
 
 cd "${SCRIPT_DIR}"
 

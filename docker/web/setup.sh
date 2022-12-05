@@ -31,6 +31,7 @@ apt-get -y autoremove && apt-get clean
 
 cp /var/tmp/private/ssl.crt /etc/ssl/webtrees.crt
 cp /var/tmp/private/ssl.key /etc/ssl/webtrees.key
+rm -rf /etc/nginx/sites-enabled/default
 cp /var/tmp/app/config/nginx.conf /etc/nginx/sites-enabled/webtrees
 sed -i "s/APP_DOMAIN/${APP_DOMAIN}/" /etc/nginx/sites-enabled/webtrees
 

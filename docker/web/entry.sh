@@ -6,7 +6,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 source "${SCRIPT_DIR}/.env"
 
 db_ready() {
-  curl "http://${APP_DOMAIN}_db:5432/" 2>&1 | grep '52'
+  curl "http://${APP_NAME}_db:5432/" 2>&1 | grep '52'
 }
 
 until db_ready; do
