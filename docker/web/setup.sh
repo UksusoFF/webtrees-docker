@@ -11,7 +11,7 @@ apt-get dist-upgrade -y
 
 apt-get install -y --no-install-recommends nginx mysql-client \
   ca-certificates \
-  php-cli php-fpm php-mbstring php-xml php-dom php-curl php-zip php-gd php-pgsql php-bcmath php-intl \
+  php-cli php-fpm php-mbstring php-xml php-dom php-curl php-zip php-gd php-mysql php-bcmath php-intl \
   curl sudo
 
 curl -sS https://getcomposer.org/installer -o composer-setup.php
