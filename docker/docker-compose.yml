@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: web/dockerfile
     volumes:
-      - ./../app:/var/www/${APP_DOMAIN}
+      - ./../app:/var/www/app
       - ./data/logs/nginx:/var/log/nginx
     ports:
       - '443:443'

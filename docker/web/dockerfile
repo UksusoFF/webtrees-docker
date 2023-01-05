@@ -1,9 +1,6 @@
 FROM ubuntu:20.04
 
-ARG APP_DOMAIN
-ENV APP_DOMAIN=$APP_DOMAIN
-
-WORKDIR "/var/www/${APP_DOMAIN}"
+WORKDIR /var/www/app
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
