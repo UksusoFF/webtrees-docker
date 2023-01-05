@@ -23,23 +23,23 @@ bash node-setup.sh && rm node-setup.sh
 apt-get install -y nodejs
 
 apt-get install -y --no-install-recommends php-dev php-pear make
-pecl channel-update pecl.php.net && pecl install xdebug
+pecl channel-update pecl.php.net && pecl install xdebug-2.9.8
 cp /var/tmp/app/config/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini
 phpenmod xdebug
 
 apt-get -y autoremove && apt-get clean
 
-cp /var/tmp/private/ssl.crt /etc/ssl/webtrees.crt
-cp /var/tmp/private/ssl.key /etc/ssl/webtrees.key
+cp /var/tmp/private/ssl.crt "/etc/ssl/${APP_DOMAIN}.crt"
+cp /var/tmp/private/ssl.key "/etc/ssl/${APP_DOMAIN}.key"
 rm -rf /etc/nginx/sites-enabled/default
-cp /var/tmp/app/config/nginx.conf /etc/nginx/sites-enabled/webtrees
-sed -i "s/APP_DOMAIN/${APP_DOMAIN}/" /etc/nginx/sites-enabled/webtrees
+cp /var/tmp/app/config/nginx.conf "/etc/nginx/sites-enabled/${APP_DOMAIN}.conf"
+sed -i "s/APP_DOMAIN/${APP_DOMAIN}/" "/etc/nginx/sites-enabled/${APP_DOMAIN}.conf"
 
 cp /var/tmp/private/*CA.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 
 init_user() {
-  USERNAME=webtrees
+  USERNAME="${APP_NAME}"
   HOME_DIR="/home/${USERNAME}"
 
   useradd --create-home --password "$(openssl passwd -1 ${USERNAME})" -g www-data "${USERNAME}"

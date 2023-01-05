@@ -5,13 +5,9 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 
 source "${SCRIPT_DIR}/.env"
 
-db_ready() {
-  curl "http://${APP_NAME}_db:5432/" 2>&1 | grep '52'
-}
-
-until db_ready; do
+while ! mysqladmin ping -h "${APP_NAME}_db" --silent; do
   >&2 echo "Waiting for database to become available..."
-  sleep 1
+  sleep 5
 done
 >&2 echo "database is available"
 

@@ -1,7 +1,6 @@
 ; <?php return; ?> DO NOT DELETE THIS LINE
-dbtype="pgsql"
 dbhost=""
-dbport="5432"
+dbport="3306"
 dbuser=""
 dbpass=""
 dbname=""

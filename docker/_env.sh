@@ -22,8 +22,8 @@ if [ ! -f "${SCRIPT_DIR}/private/ssl.key" ]; then
 fi
 
 if grep -q "${APP_DOMAIN}" /etc/hosts; then
-    echo "Domain ${APP_DOMAIN} already exist in /etc/hosts"
+  echo "Domain ${APP_DOMAIN} already exist in /etc/hosts"
 else
-    echo "Adding ${APP_DOMAIN} domain to /etc/hosts..."
-    echo "127.0.0.1 ${APP_DOMAIN}" | sudo tee -a /etc/hosts
+  echo "Adding ${APP_DOMAIN} domain to /etc/hosts..."
+  echo "127.0.0.1 ${APP_DOMAIN}" | sudo tee -a /etc/hosts
 fi

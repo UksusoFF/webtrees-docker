@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   backend:
@@ -7,29 +7,37 @@ services:
       context: .
       dockerfile: web/dockerfile
     volumes:
-      - ./../webtrees:/var/www/webtrees
+      - ./../app:/var/www/${APP_DOMAIN}
       - ./data/logs/nginx:/var/log/nginx
     ports:
       - '443:443'
       - '80:80'
     environment:
       PHP_IDE_CONFIG: 'serverName=${APP_DOMAIN}'
+      APP_DOMAIN: '${APP_DOMAIN}'
     depends_on:
       - database
   database:
     container_name: '${APP_NAME}_db'
-    image: postgres:12
+    image: mysql:5.7
     environment:
-      POSTGRES_DB: ${APP_NAME}
-      POSTGRES_USER: ${APP_NAME}
-      POSTGRES_PASSWORD: ${APP_NAME}
+      MYSQL_DB: ${APP_NAME}
+      MYSQL_USER: ${APP_NAME}
+      MYSQL_PASSWORD: ${APP_NAME}
+      MYSQL_ROOT_PASSWORD: ${APP_NAME}
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/mysql
     ports:
-      - '5432:5432'
+      - '3306:3306'
   maildev:
     container_name: '${APP_NAME}_mail'
     image: dominikserafin/maildev
     ports:
       - '9025:1025'
       - '9080:1080'
+  adminer:
+    image: adminer
+    environment:
+      ADMINER_DESIGN: nette
+    ports:
+      - '8666:8080'
