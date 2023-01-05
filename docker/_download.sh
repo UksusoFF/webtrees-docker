@@ -16,11 +16,11 @@ ARTIFACT_URL="https://github.com/fisharebest/webtrees/releases/download/${LATEST
 
 echo $ARTIFACT_URL
 
-#wget "${ARTIFACT_URL}" -O "${DATA_DIR}/webtrees.zip"
+wget "${ARTIFACT_URL}" -O "${DATA_DIR}/webtrees.zip"
 
 echo ${DATA_DIR}/webtrees.zip
 
-#unzip ${DATA_DIR}/webtrees.zip -d "${SOURCE_ROOT}"
+unzip ${DATA_DIR}/webtrees.zip -d "${SOURCE_ROOT}"
 
 if [ ! -f "${SOURCE_ROOT}/app/init.php" ]; then
   cp "${SCRIPT_DIR}/config/init.php" "${SOURCE_ROOT}/app/init.php"
