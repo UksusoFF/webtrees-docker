@@ -21,7 +21,7 @@ services:
     container_name: '${APP_NAME}_db'
     image: mysql:5.7
     environment:
-      MYSQL_DB: ${APP_NAME}
+      MYSQL_DATABASE: ${APP_NAME}
       MYSQL_USER: ${APP_NAME}
       MYSQL_PASSWORD: ${APP_NAME}
       MYSQL_ROOT_PASSWORD: ${APP_NAME}

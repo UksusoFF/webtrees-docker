@@ -1,4 +1,5 @@
 ; <?php return; ?> DO NOT DELETE THIS LINE
+dbtype="mysql"
 dbhost=""
 dbport="3306"
 dbuser=""
