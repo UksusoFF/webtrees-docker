@@ -10,6 +10,5 @@ while read -r CONTAINER; do
 done < <(docker ps -q)
 docker system prune -a --force
 docker-compose down --remove-orphans
-rm -f .env
 rm -rf "${SCRIPT_DIR}"/data/db/*
 rm -rf "${SCRIPT_DIR}"/data/logs/*

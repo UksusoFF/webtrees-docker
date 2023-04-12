@@ -30,8 +30,8 @@ if [ ! -f "${SOURCE_ROOT}/app/init.php" ]; then
   sed -i "s/APP_NAME/${APP_NAME}/" "${SOURCE_ROOT}/app/init.php"
 fi
 
-docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "drop database IF EXISTS ${APP_NAME};"
-docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "create database ${APP_NAME};"
+docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "DROP DATABASE IF EXISTS ${APP_NAME};"
+docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "CREATE DATABASE ${APP_NAME};"
 docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "GRANT ALL PRIVILEGES ON *.* TO '${APP_NAME}'@'%';"
 
 docker exec --user "${APP_NAME}" -i "${APP_NAME}_web" php //var/www/app/init.php
