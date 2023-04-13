@@ -20,7 +20,7 @@ wget "${ARTIFACT_URL}" -O "${DATA_DIR}/webtrees.zip"
 echo ${DATA_DIR}/webtrees.zip
 
 unzip ${DATA_DIR}/webtrees.zip -d "${SOURCE_ROOT}"
-mv "${SOURCE_ROOT}/webtrees" "${SOURCE_ROOT}/app"
+cp -r "${SOURCE_ROOT}/webtrees"/* "${SOURCE_ROOT}/app"
 
 if [ ! -f "${SOURCE_ROOT}/app/init.php" ]; then
   cp "${SCRIPT_DIR}/config/init.php" "${SOURCE_ROOT}/app/init.php"

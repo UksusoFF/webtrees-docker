@@ -8,4 +8,4 @@ ENV_FILE="${SCRIPT_DIR}/.env"
 
 source "${ENV_FILE}"
 
-git clone https://github.com/UksusoFF/webtrees-faces "${MODULES_DIR}/faces"
+rm -rf "${MODULES_DIR}/faces" && git clone https://github.com/UksusoFF/webtrees-faces "${MODULES_DIR}/faces"
