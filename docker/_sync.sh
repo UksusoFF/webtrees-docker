@@ -27,11 +27,13 @@ docker exec -i "${DB_HOST}" mysql -uroot -p${DB_PASS} <<< "CREATE DATABASE ${DB_
 docker exec -i "${DB_HOST}" mysql -uroot -p${DB_PASS} <<< "GRANT ALL PRIVILEGES ON *.* TO '${DB_USER}'@'%';"
 docker exec -i "${DB_HOST}" mysql -u${DB_USER} -p${DB_PASS} ${DB_NAME} < ${DATA_DIR}/db.sql
 
-tar -zxvf ${DATA_DIR}/${WEB_DAV_FILES} -C "${SOURCE_ROOT}/app"
+tar -zxvf ${DATA_DIR}/${WEB_DAV_FILES} -C "${SOURCE_ROOT}/tmp"
 
-chmod -R 777 "${SOURCE_ROOT}/app"
+rm -rf "${SOURCE_ROOT}/app"/*
 
-cp "${SCRIPT_DIR}/config/config.ini.php" "${CONF_FILE}"
+cp -R "${SOURCE_ROOT}/tmp"/* "${SOURCE_ROOT}/app"
+
+rm -rf "${SOURCE_ROOT}/tmp"/*
 
 sed -i "
 s/dbname=.*/dbname=\"${DB_NAME}\"/;

@@ -17,6 +17,9 @@ services:
       APP_DOMAIN: '${APP_DOMAIN}'
     depends_on:
       - database
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
   database:
     container_name: '${APP_NAME}_db'
     image: mysql:5.7
@@ -29,12 +32,14 @@ services:
       - ./data/db:/var/lib/mysql
     ports:
       - '3306:3306'
+
   maildev:
     container_name: '${APP_NAME}_mail'
     image: dominikserafin/maildev
     ports:
       - '9025:1025'
       - '9080:1080'
+
   adminer:
     image: adminer
     environment:
