@@ -11,7 +11,7 @@ while ! mysqladmin ping -h "${APP_NAME}_db" --silent; do
 done
 >&2 echo "database is available"
 
-service php7.4-fpm start
+service php8.3-fpm start
 service nginx start
 
 echo "Sleeping..."

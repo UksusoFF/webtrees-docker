@@ -18,13 +18,9 @@ curl -sS https://getcomposer.org/installer -o composer-setup.php
 php composer-setup.php --install-dir=/usr/bin --filename=composer && rm composer-setup.php
 ln -s /usr/bin/composer /usr/local/bin/composer
 
-curl -sS https://deb.nodesource.com/setup_16.x -o node-setup.sh
-bash node-setup.sh && rm node-setup.sh
-apt-get install -y nodejs
-
 apt-get install -y --no-install-recommends php-dev php-pear make
-pecl channel-update pecl.php.net && pecl install xdebug-2.9.8
-cp /var/tmp/app/config/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini
+pecl channel-update pecl.php.net && pecl install xdebug-3.4.0
+cp /var/tmp/app/config/xdebug.ini /etc/php/8.3/mods-available/xdebug.ini
 phpenmod xdebug
 
 apt-get -y autoremove && apt-get clean

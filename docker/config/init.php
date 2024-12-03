@@ -10,7 +10,7 @@ $webtrees = new Webtrees();
 $webtrees->bootstrap();
 $webtrees->cliRequest();
 
-$wizard = app(\Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard::class);
+$wizard = \Fisharebest\Webtrees\Registry::container()->get(\Fisharebest\Webtrees\Http\RequestHandlers\SetupWizard::class);
 
 $reflector = new \ReflectionObject($wizard);
 $method = $reflector->getMethod('step6Install');

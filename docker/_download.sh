@@ -34,4 +34,4 @@ docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "DROP DATABASE IF
 docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "CREATE DATABASE ${APP_NAME};"
 docker exec -i "${APP_NAME}_db" mysql -uroot -p${APP_NAME} <<< "GRANT ALL PRIVILEGES ON *.* TO '${APP_NAME}'@'%';"
 
-docker exec --user "${APP_NAME}" -i "${APP_NAME}_web" php //var/www/app/init.php
+docker exec --user "${APP_NAME}" -i "${APP_NAME}_backend" php //var/www/app/init.php

@@ -16,7 +16,7 @@ cd "${SCRIPT_DIR}"
 echo "maildev available at: http://127.0.0.1:9080/"
 
 if [ -z $(which winpty) ]; then
-  docker exec --user "${APP_NAME}" -it "$(docker ps -f name=${APP_NAME}_web -q)" /bin/bash
+  docker exec --user "${APP_NAME}" -it "$(docker ps -f name=${APP_NAME}_backend -q)" /bin/bash
 else
-  winpty docker exec --user "${APP_NAME}" -it "$(docker ps -f name=${APP_NAME}_web -q)" bash
+  winpty docker exec --user "${APP_NAME}" -it "$(docker ps -f name=${APP_NAME}_backend -q)" bash
 fi
